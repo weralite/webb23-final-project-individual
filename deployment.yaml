@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: blog-deployment
+  name: uppgift2
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: blog
+      app: uppgift2
   template:
     metadata:
       labels:
-        app: blog
+        app: uppgift2
     spec:
       containers:
-      - name: blog
-        image: project
+      - name: uppgift2
+        image: uppgift2
         imagePullPolicy: Never
         ports:
         - containerPort: 8000

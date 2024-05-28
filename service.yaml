@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: blog-service
+  name: uppgift2-service
 spec:
   selector:
-    app: blog
+    app: uppgift2
   ports:
   - protocol: TCP
     port: 8000
