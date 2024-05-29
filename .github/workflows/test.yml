@@ -16,22 +16,15 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: django_db
+        options: >-
+            --health-cmd pg_isready
+            --health-interval 10s
+            --health-timeout 5s
+            --health-retries 5
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
-    - name: Print PostgreSQL logs
-      run: docker logs db
-
-    - name: Wait for PostgreSQL to become ready
-      run: |
-        for i in {1..10}; do
-          pg_isready -h db -U postgres && echo Success && exit 0
-          echo -n .
-          sleep 1
-        done
-        echo Failed waiting for Postgres && exit 1
 
     - name: Set up Python
       uses: actions/setup-python@v2
